@@ -1,11 +1,11 @@
 # push!(LOAD_PATH,"../src/")
-using Documenter, Mendeleev
+using Documenter, ChemElementsBB
 
 makedocs(
-    modules = [Mendeleev],
+    modules = [ChemElementsBB],
     format = Documenter.HTML(; prettyurls = get(ENV, "CI", nothing) == "true"),
     authors = "Eben60",
-    sitename = "Mendeleev.jl",
+    sitename = "ChemElementsBB.jl",
     pages = Any["Home" => "index.md", "Elements Data Fields" => "elements_data_fields.md", "Types" => "types.md"]
     # strict = true,
     # clean = true,
@@ -13,7 +13,7 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/Eben60/Mendeleev.jl.git",
+    repo = "github.com/Eben60/ChemElementsBB.jl.git",
     versions = nothing,
     push_preview = true
 )

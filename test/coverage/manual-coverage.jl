@@ -1,5 +1,5 @@
 using Pkg, Coverage
-Pkg.test("Mendeleev"; coverage=true)
+Pkg.test("ChemElementsBB"; coverage=true)
 
 srcfolder = normpath(@__DIR__, "../../src")
 coverage = process_folder(srcfolder)
@@ -16,4 +16,4 @@ end;
 #     LCOV.readfolder("test")))
 # #
 
-# @show get_summary(process_file(joinpath("src", "Mendeleev.jl")))
+# @show get_summary(process_file(joinpath("src", "ChemElementsBB.jl")))
