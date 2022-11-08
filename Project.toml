@@ -1,0 +1,10 @@
+name = "ChemElementsBB"
+uuid = "0ccca54f-f716-42eb-a58d-e6954ac683ff"
+authors = ["Eben60"]
+version = "0.1.0"
+
+[deps]
+
+
+[compat]
+julia = "1.6"
