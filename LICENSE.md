@@ -1,4 +1,4 @@
-The Mendeleev.jl package is licensed under the MIT "Expat" License:
+The ChemElementsBB.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2022: Eben60.
 >
