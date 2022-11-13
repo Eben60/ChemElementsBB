@@ -22,8 +22,6 @@ Base.isequal(elm1::ChemElemBB, elm2::ChemElemBB) = elm1.number == elm2.number
 # since Element equality is determined by atomic number alone.
 Base.hash(elm::ChemElemBB, h::UInt) = hash(elm.number, h)
 
-# Compare elements by atomic number to produce the most common way elements
-# are sorted.
 Base.isless(elm1::ChemElemBB, elm2::ChemElemBB) = elm1.weight < elm2.weight
 
 # Provide a simple way to iterate over all elements.
@@ -36,7 +34,7 @@ Base.:+(x::ChemElemBB, y::ChemElemBB) = +(x.weight, y.weight)
 Base.:-(x::ChemElemBB, y::ChemElemBB) = -(x.weight, y.weight)
 
 Base.show(io::IO, cs::ChemElems) = println(io, "List of chemical elements from $(cs[begin].symbol) to $(cs[end].symbol)")
-Base.show(io::IO, e::ChemElemBB) = println(io, "$(e.name), $(e.symbol) - element $(e.number), m=$(e.weight)")
+Base.show(io::IO, e::ChemElemBB) = println(io, "$(e.name) ($(e.symbol)) - element $(e.number), m=$(e.weight)")
 
 
 function Base.getproperty(e::ChemElems, s::Symbol)
@@ -44,17 +42,3 @@ function Base.getproperty(e::ChemElems, s::Symbol)
     haskey(e.bysymbol, s) && return e.data[e.bysymbol[s]]
     error("type ChemElems has no field $s")
 end
-
-function by_str2sym(s)
-    s = Symbol(s)
-    ! haskey(chem_els, s) && throw(DomainError(s, "Element with symbol $s not found"))
-    return chem_els[s]
-end
-
-
-macro import_els(args...)
-    v = [:($(esc(x)) = ChemElementsBB.by_str2sym($(string(x)))) for x in args]
-    return Expr(:block, v...)
-end
-
-export @import_els

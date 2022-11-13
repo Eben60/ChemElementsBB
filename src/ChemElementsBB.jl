@@ -11,10 +11,12 @@ module ChemElementsBB
 include("ChemElem_def.jl")
 include("elements_init.jl")
 include("overloads.jl")
+include("syntax-sugar.jl")
 
 
 export ChemElemBB # struct definition
 export chem_els # all elements data
+export @import_els 
 
 # import these explicitly for legacy (formerly PeriodicTable.jl based) applications
 elements = chem_els
