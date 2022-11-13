@@ -45,3 +45,16 @@ function Base.getproperty(e::ChemElems, s::Symbol)
     error("type ChemElems has no field $s")
 end
 
+function by_str2sym(s)
+    s = Symbol(s)
+    ! haskey(chem_els, s) && throw(DomainError(s, "Element with symbol $s not found"))
+    return chem_els[s]
+end
+
+
+macro import_els(args...)
+    v = [:($(esc(x)) = ChemElementsBB.by_str2sym($(string(x)))) for x in args]
+    return Expr(:block, v...)
+end
+
+export @import_els
